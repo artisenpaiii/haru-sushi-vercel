@@ -17,12 +17,13 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-100 flex items-center justify-between px-10 h-16 bg-cream/92 backdrop-blur-[10px] border-b-2 border-dashed border-border max-sm:px-5">
+    <nav className="fixed top-0 left-0 right-0 z-100 flex items-center justify-between px-10 h-16 backdrop-blur-[12px] border-b-2 border-dashed border-border animate-slide-down max-sm:px-5"
+      style={{ background: "rgba(253,246,236,0.9)" }}>
       <Link
         href="/"
-        className="font-display text-[1.3rem] text-cherry flex items-baseline gap-1.5 transition-transform duration-300 animate-wobble"
+        className="font-display text-[1.35rem] text-cherry flex items-center gap-2 transition-transform duration-300 hover:scale-[1.05] hover:rotate-[-1deg]"
       >
-        Haru Sushi{" "}
+        🍣 Haru Sushi{" "}
         <span className="font-jp text-xs text-light font-light">はるすし</span>
       </Link>
 
@@ -39,16 +40,17 @@ export function Navbar() {
       <ul
         className={cn(
           "flex gap-8 list-none",
-          "max-sm:hidden max-sm:absolute max-sm:top-16 max-sm:left-0 max-sm:right-0 max-sm:flex-col max-sm:gap-0 max-sm:bg-cream/98 max-sm:backdrop-blur-[10px] max-sm:border-b-2 max-sm:border-dashed max-sm:border-border max-sm:py-2",
+          "max-sm:hidden max-sm:absolute max-sm:top-16 max-sm:left-0 max-sm:right-0 max-sm:flex-col max-sm:gap-0 max-sm:backdrop-blur-[12px] max-sm:border-b-2 max-sm:border-dashed max-sm:border-border max-sm:py-2",
           menuOpen && "max-sm:!flex"
         )}
+        style={menuOpen ? { background: "rgba(253,246,236,0.98)" } : undefined}
       >
         {NAV_LINKS.map(({ href, label }) => (
           <li key={href} className="max-sm:border-t max-sm:border-border">
             <Link
               href={href}
               className={cn(
-                "font-bold text-[0.9rem] text-mid relative pb-0.5 transition-all duration-200",
+                "font-extrabold text-[0.9rem] text-mid relative pb-0.5 transition-all duration-200",
                 "after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-0.5 after:bg-cherry after:rounded-sm after:transition-all after:duration-250",
                 "hover:text-cherry hover:-translate-y-px hover:after:w-full",
                 "max-sm:block max-sm:px-6 max-sm:py-4 max-sm:after:hidden",

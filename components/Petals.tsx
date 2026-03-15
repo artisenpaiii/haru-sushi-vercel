@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const PETAL_COUNT = 12;
+const PETAL_COUNT = 18;
 
 export function Petals() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -15,8 +15,8 @@ export function Petals() {
       const petal = document.createElement("div");
       petal.className = "petal";
       petal.style.left = `${Math.random() * 100}vw`;
-      petal.style.animationDuration = `${8 + Math.random() * 10}s`;
-      petal.style.animationDelay = `${Math.random() * 15}s`;
+      petal.style.animationDuration = `${6 + Math.random() * 8}s`;
+      petal.style.animationDelay = `${Math.random() * 12}s`;
       container.appendChild(petal);
     }
 

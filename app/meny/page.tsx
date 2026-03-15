@@ -7,35 +7,43 @@ import { cn } from "@/lib/cn";
 
 const CATEGORY_LIST = Object.entries(MENU_ITEM_CATEGORY).map(([, value]) => value);
 
+function tagClass(tag: string) {
+  if (tag === "Vegetarisk") return "tag-veg";
+  if (tag === "Hot") return "tag-hot";
+  if (tag === "Rå") return "tag-raw";
+  if (tag === "Dryck") return "tag-drink";
+  return "tag-other";
+}
+
 export default function Meny() {
   const [activeCategory, setActiveCategory] = useState(CATEGORY_LIST[0]);
 
   const filtered = menuItems.filter((item) => item.category === activeCategory);
 
   return (
-    <section className="py-2 lg:py-20 px-8">
+    <section className="py-2 lg:py-16 px-8" style={{ background: "var(--color-cream)" }}>
       <div className="max-w-250 mx-auto">
-        <header className="text-center mb-12 animate-fade-up">
+        <header className="text-center mb-10 animate-fade-up">
           <p className="text-[0.78rem] font-extrabold tracking-[0.12em] uppercase text-salmon mb-2">
-            Vår Meny
+            🍽️ Vad vill du äta?
           </p>
-          <h1 className="font-display text-[clamp(2rem,5vw,3rem)] text-dark leading-[1.1]">
-            Menyn
+          <h1 className="font-display text-[clamp(2rem,5vw,3.2rem)] text-dark leading-[1.1]">
+            Vår Meny
           </h1>
           <p className="font-jp text-[0.9rem] text-light mt-1 tracking-[0.1em]">
             メニュー
           </p>
         </header>
 
-        <div className="flex gap-1.5 flex-wrap justify-center mb-8">
+        <div className="flex gap-2 flex-wrap justify-center mb-8">
           {CATEGORY_LIST.map((cat) => (
             <button
               key={cat}
               className={cn(
-                "py-1.5 px-4 rounded-full font-body font-bold text-[0.82rem] cursor-pointer border-2 transition-all duration-200",
+                "py-1.5 px-4 rounded-full font-body font-extrabold text-[0.82rem] cursor-pointer border-2 transition-all duration-200",
                 cat === activeCategory
-                  ? "bg-cherry text-white border-solid border-cherry"
-                  : "bg-white text-mid border-dashed border-border hover:-translate-y-0.5 hover:border-cherry hover:text-cherry"
+                  ? "bg-cherry text-white border-cherry shadow-[0_4px_12px_rgba(201,64,64,0.25)]"
+                  : "bg-white text-mid border-border hover:-translate-y-0.5 hover:border-cherry hover:text-cherry"
               )}
               onClick={() => setActiveCategory(cat)}
             >
@@ -48,8 +56,11 @@ export default function Meny() {
           {filtered.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-2xl p-5 border border-border transition-all duration-300 hover:-translate-y-[3px] hover:-rotate-[0.5deg] hover:shadow-[0_8px_25px_rgba(0,0,0,0.07)] group"
+              className="bg-white rounded-2xl p-5 border-2 border-border transition-all duration-300 hover:-translate-y-1 hover:rotate-[-0.5deg] hover:shadow-[0_12px_32px_rgba(46,31,31,0.1)] hover:border-blush group relative overflow-hidden"
             >
+              {/* top accent bar */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blush to-salmon opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-2xl" />
+
               <div className="flex items-start gap-2.5 mb-2">
                 <span className="text-2xl leading-none shrink-0 transition-transform duration-300 group-hover:animate-wiggle">
                   {MENU_ITEM_ICON[item.iconId] || item.iconId}
@@ -78,7 +89,7 @@ export default function Meny() {
                   {item.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[0.68rem] font-bold py-0.5 px-2 rounded-full tracking-[0.03em] bg-cream text-dark"
+                      className={cn("text-[0.68rem] font-bold py-0.5 px-2 rounded-full tracking-[0.05em]", tagClass(tag))}
                     >
                       {tag}
                     </span>
