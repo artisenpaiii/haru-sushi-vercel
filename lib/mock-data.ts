@@ -6,164 +6,308 @@ import type {
   MetaDataOpeningHours,
 } from "./types";
 
+// =========================
+// TYPES
+// =========================
+
+export type Allergen =
+  | "Gluten"
+  | "Skaldjur"
+  | "Fisk"
+  | "Ägg"
+  | "Soja"
+  | "Sesam"
+  | "Mjölk";
+
+export interface MenuItem {
+  id: string;
+  label: string;
+  description?: string;
+  subDescription?: string;
+  category: string;
+  iconId?: string;
+  tags?: string[];
+  allergens?: Allergen[];
+  price: number;
+  upsell?: string[]; // ids
+}
+
+export interface LunchItem {
+  id: string;
+  label: string;
+  description: string;
+  price: number;
+  alternatives?: { label: string; price: number }[];
+}
+
+export interface Combo {
+  id: string;
+  label: string;
+  description: string;
+  price: number;
+  items: string[]; // MenuItem ids
+}
+
+// =========================
+// CATEGORY ORDER (UI)
+// =========================
+
+export const categoryOrder = [
+  "Deals",
+  "Förrätter",
+  "Nigiri",
+  "Maki",
+  "Friterad Maki",
+  "Sushiburrito",
+  "Varmrätter",
+  "Poké Bowl",
+  "Tillbehör",
+];
+
+// =========================
+// MENU ITEMS
+// =========================
+
 export const menuItems: MenuItem[] = [
+  // 🥢 FÖRRÄTTER
   {
-    id: "1",
+    id: "starter_edamame",
     label: "Edamame",
     description: "Kokta sojabönor med havssalt",
-    category: "Förätter",
-    iconId: "edamame",
+    category: "Förrätter",
     tags: ["Vegetarisk"],
-    price: 49,
+    allergens: ["Soja"],
+    price: 45,
   },
   {
-    id: "2",
-    label: "Gyoza",
-    subDescription: "ぎょうざ",
-    description: "Fyllda japanska dumplings, stekta",
-    category: "Förätter",
-    iconId: "gyoza",
-    tags: [],
-    price: 69,
+    id: "starter_wakame",
+    label: "Wakame",
+    description: "Japansk sjögrässallad",
+    category: "Förrätter",
+    tags: ["Vegetarisk"],
+    allergens: ["Sesam"],
+    price: 45,
   },
   {
-    id: "3",
-    label: "Lax Nigiri",
-    subDescription: "サーモン",
-    description: "2 st nigiri med färsk lax",
+    id: "starter_gyoza",
+    label: "Friterad Gyoza",
+    description: "5 st dumplings med nötfyllning",
+    category: "Förrätter",
+    tags: ["Populär"],
+    allergens: ["Gluten", "Soja"],
+    price: 65,
+  },
+  {
+    id: "starter_springroll",
+    label: "Kycklingvårrullar",
+    description: "4 st krispiga vårrullar",
+    category: "Förrätter",
+    allergens: ["Gluten"],
+    price: 65,
+  },
+
+  // 🍣 NIGIRI
+  {
+    id: "nigiri_salmon",
+    label: "Lax Nigiri (5 bitar)",
     category: "Nigiri",
-    iconId: "sushi",
-    tags: ["Rå"],
-    price: 59,
+    tags: ["Rå", "Populär"],
+    allergens: ["Fisk"],
+    price: 85,
+    upsell: ["side_soy"],
   },
   {
-    id: "4",
-    label: "Sake Maki",
-    subDescription: "鮭巻き",
-    description: "8 bitar laxmaki",
-    category: "Maki",
-    iconId: "maki",
+    id: "nigiri_tuna",
+    label: "Tonfisk Nigiri (5 bitar)",
+    category: "Nigiri",
     tags: ["Rå"],
+    allergens: ["Fisk"],
     price: 89,
   },
   {
-    id: "5",
-    label: "Tempura Maki",
-    description: "8 bitar friterad maki med räkor",
+    id: "nigiri_shrimp",
+    label: "Räka Nigiri (5 bitar)",
+    category: "Nigiri",
+    allergens: ["Skaldjur"],
+    price: 85,
+  },
+
+  // 🍥 MAKI
+  {
+    id: "maki_california",
+    label: "California Roll",
+    description: "Crabfish, avokado, gurka, kewpie, rom",
+    category: "Maki",
+    tags: ["Populär"],
+    allergens: ["Skaldjur", "Ägg"],
+    price: 85,
+  },
+  {
+    id: "maki_ebi",
+    label: "Ebi Tempura Roll",
+    category: "Maki",
+    tags: ["Krispig", "Populär"],
+    allergens: ["Skaldjur", "Gluten"],
+    price: 85,
+  },
+  {
+    id: "maki_haru",
+    label: "Haru Special ⭐",
+    category: "Maki",
+    tags: ["Signatur"],
+    allergens: ["Fisk", "Skaldjur", "Mjölk"],
+    price: 89,
+  },
+
+  // 🍤 FRITERAD MAKI
+  {
+    id: "fried_salmon",
+    label: "Friterad Lax Roll",
     category: "Friterad Maki",
-    iconId: "shrimp",
-    tags: ["Hot"],
-    price: 109,
+    tags: ["Krispig"],
+    allergens: ["Fisk", "Gluten"],
+    price: 89,
   },
   {
-    id: "6",
-    label: "Haru Burrito",
-    subDescription: "はるブリトー",
-    description: "Stor sushiburrito med lax, avokado och krispig tempura",
+    id: "fried_yakiniku",
+    label: "Friterad Yakiniku Roll",
+    category: "Friterad Maki",
+    tags: ["Krispig", "Premium"],
+    allergens: ["Gluten", "Soja"],
+    price: 89,
+  },
+
+  // 🌯 SUSHIBURRITO
+  {
+    id: "burrito_haru",
+    label: "Haru Burrito ⭐",
     category: "Sushiburrito",
-    iconId: "bento",
-    tags: [],
-    price: 129,
+    tags: ["Signatur", "Populär"],
+    allergens: ["Fisk", "Gluten", "Ägg"],
+    price: 185,
+    upsell: ["side_chilimayo", "drink_soda"],
   },
   {
-    id: "7",
-    label: "Blandad Sushi 12 bitar",
-    description: "Chef's val av nigiri och maki",
-    category: "Mixad Sushi",
-    iconId: "star",
-    tags: [],
+    id: "burrito_vegan",
+    label: "Vegansk Burrito",
+    category: "Sushiburrito",
+    tags: ["Vegetarisk"],
+    allergens: ["Soja"],
+    price: 175,
+  },
+
+  // 🍱 VARMRÄTTER
+  {
+    id: "hot_karaage",
+    label: "Karaage Kyckling",
+    category: "Varmrätter",
+    tags: ["Populär"],
+    allergens: ["Gluten", "Soja"],
+    price: 149,
+    upsell: ["drink_soda"],
+  },
+  {
+    id: "hot_yakiniku",
+    label: "Yakiniku",
+    category: "Varmrätter",
+    allergens: ["Soja"],
+    price: 149,
+  },
+  {
+    id: "hot_salmon",
+    label: "Lax Teriyaki",
+    category: "Varmrätter",
+    allergens: ["Fisk", "Soja"],
     price: 159,
   },
+
+  // 🥗 POKÉ
   {
-    id: "8",
-    label: "Chicken Teriyaki",
-    subDescription: "チキン照り焼き",
-    description: "Grillad kyckling med teriyakisås, ris och sallad",
-    category: "Varmrätter",
-    iconId: "chicken",
-    tags: [],
-    price: 119,
+    id: "poke_salmon",
+    label: "Poké Bowl Lax",
+    category: "Poké Bowl",
+    tags: ["Populär"],
+    allergens: ["Fisk", "Sesam"],
+    price: 155,
+    upsell: ["drink_soda"],
   },
   {
-    id: "9",
-    label: "Pokébowl Lax",
-    subDescription: "ポケボウル",
-    description: "Lax, ris, avokado, edamame, mango och sesamdressing",
-    category: "Pokébowl",
-    iconId: "bowl",
-    tags: ["Rå"],
-    price: 129,
+    id: "poke_chicken",
+    label: "Poké Bowl Kyckling",
+    category: "Poké Bowl",
+    allergens: ["Gluten", "Soja"],
+    price: 155,
+  },
+
+  // 🥤 TILLBEHÖR
+  {
+    id: "side_chilimayo",
+    label: "Chilimajo",
+    category: "Tillbehör",
+    allergens: ["Ägg"],
+    price: 15,
   },
   {
-    id: "10",
-    label: "Ramune",
-    description: "Japansk läsk, olika smaker",
-    category: "Tillbehör & Dryck",
-    iconId: "drink",
-    tags: ["Dryck"],
-    price: 35,
+    id: "side_soy",
+    label: "Soja",
+    category: "Tillbehör",
+    allergens: ["Soja"],
+    price: 12,
+  },
+  {
+    id: "drink_soda",
+    label: "Läsk",
+    category: "Tillbehör",
+    price: 25,
   },
 ];
+
+// =========================
+// COMBOS (KASSA OPTIMERING)
+// =========================
+
+export const combos: Combo[] = [
+  {
+    id: "combo_1",
+    label: "Haru Combo ⭐",
+    description: "12 bitar sushi + dryck",
+    price: 179,
+    items: ["nigiri_salmon", "drink_soda"],
+  },
+  {
+    id: "combo_2",
+    label: "Bento Combo",
+    description: "Varmrätt + 5 bitar sushi",
+    price: 179,
+    items: ["hot_karaage", "nigiri_salmon"],
+  },
+];
+
+// =========================
+// LUNCH
+// =========================
 
 export const lunchItems: LunchItem[] = [
   {
     id: "l1",
-    label: "Lunch A",
-    description: "8 bitar maki + misosoppa",
-    price: 99,
+    label: "Dagens Sushi ⭐",
+    description: "10 / 12 / 16 bitar",
+    price: 119,
     alternatives: [
-      { label: "Uppgradera till 12 bitar", price: 119 },
+      { label: "12 bitar", price: 139 },
+      { label: "16 bitar", price: 175 },
     ],
   },
   {
     id: "l2",
-    label: "Lunch B",
-    description: "Pokébowl med valfri topping",
-    price: 109,
-    alternatives: [
-      { label: "Extra protein", price: 129 },
-    ],
+    label: "Dagens Poké Bowl",
+    description: "Fråga personal",
+    price: 135,
   },
   {
     id: "l3",
-    label: "Lunch C",
-    description: "Chicken Teriyaki med ris och sallad",
-    price: 109,
-    alternatives: [],
-  },
-  {
-    id: "l4",
-    label: "Lunch D",
-    description: "Sushiburrito med valfri fyllning",
-    price: 119,
-    alternatives: [
-      { label: "Dubbel storlek", price: 159 },
-    ],
+    label: "Dagens Varmrätt",
+    description: "Fråga personal",
+    price: 139,
   },
 ];
-
-export const metaContact: MetaDataContact = {
-  key: "contact",
-  phone: "0491-123 45",
-  email: "info@harusushi.se",
-};
-
-export const metaLocation: MetaDataLocation = {
-  key: "location",
-  address: "Lilla Torget 3",
-  zipcode: "572 30",
-  city: "Oskarshamn",
-  country: "Sverige",
-};
-
-export const metaOpeningHours: MetaDataOpeningHours = {
-  key: "openingHours",
-  entries: [
-    { label: "Lunch", from: "11:00", to: "14:00" },
-    { label: "Måndag–Fredag", from: "11:00", to: "20:00" },
-    { label: "Lördag", from: "12:00", to: "20:00" },
-    { label: "Söndag", from: "12:00", to: "18:00" },
-    { label: "Julafton", from: "11:00", to: "14:00", avvikande: true },
-    { label: "Nyårsafton", from: "11:00", to: "15:00", avvikande: true },
-  ],
-};
