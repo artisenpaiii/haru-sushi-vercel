@@ -3,7 +3,6 @@ import { Shrikhand, Nunito, Noto_Serif_JP } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Petals } from "@/components/Petals";
-import { CursorTrail } from "@/components/CursorTrail";
 import "./globals.css";
 
 const shrikhand = Shrikhand({
@@ -63,7 +62,6 @@ export default function RootLayout({
       <body
         className={`${shrikhand.variable} ${nunito.variable} ${notoSerifJP.variable}`}
       >
-        <CursorTrail />
         <Petals />
         <Navbar />
         <main className="relative z-1 pt-16 min-h-[calc(100vh-4rem)] flex flex-col [&>section]:flex-1">
