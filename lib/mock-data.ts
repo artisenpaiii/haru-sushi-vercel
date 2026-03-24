@@ -1,53 +1,14 @@
 import type {
+  Allergen,
   MenuItem,
   LunchItem,
+  Combo,
   MetaDataContact,
   MetaDataLocation,
   MetaDataOpeningHours,
 } from "./types";
 
-// =========================
-// TYPES
-// =========================
-
-export type Allergen =
-  | "Gluten"
-  | "Skaldjur"
-  | "Fisk"
-  | "Ägg"
-  | "Soja"
-  | "Sesam"
-  | "Mjölk";
-
-export interface MenuItem {
-  id: string;
-  label: string;
-  description?: string;
-  subDescription?: string;
-  category: string;
-  iconId?: string;
-  tags?: string[];
-  allergens?: Allergen[];
-  price: number;
-  price2?: number; // 10-bitar price where applicable
-  upsell?: string[]; // ids
-}
-
-export interface LunchItem {
-  id: string;
-  label: string;
-  description: string;
-  price: number;
-  alternatives?: { label: string; price: number }[];
-}
-
-export interface Combo {
-  id: string;
-  label: string;
-  description: string;
-  price: number;
-  items: string[]; // MenuItem ids
-}
+export type { Allergen, MenuItem, LunchItem, Combo };
 
 // =========================
 // META
@@ -112,8 +73,8 @@ export const menuItems: MenuItem[] = [
   {
     id: "starter_hosomaki",
     label: "Hosomaki 6 bitar",
-    description: "Lax / Ebitempura / Avokado / Gurka",
-    subDescription: "Lax / Tonfisk / Räka — 55kr",
+    description: "Lax / Ebitempura / Gurka",
+    subDescription: "Vegetarisk (Avokado) - 55kr",
     category: "Förrätter",
     allergens: ["Fisk", "Skaldjur", "Gluten"],
     price: 65,

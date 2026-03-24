@@ -1,12 +1,24 @@
+export type Allergen =
+  | "Gluten"
+  | "Skaldjur"
+  | "Fisk"
+  | "Ägg"
+  | "Soja"
+  | "Sesam"
+  | "Mjölk";
+
 export interface MenuItem {
   id: string;
   label: string;
-  subDescription?: string;
   description?: string;
+  subDescription?: string;
   category: string;
-  iconId: string;
-  tags: string[];
+  iconId?: string;
+  tags?: string[];
+  allergens?: Allergen[];
   price: number;
+  price2?: number;
+  upsell?: string[];
 }
 
 export interface LunchAlternative {
@@ -19,7 +31,15 @@ export interface LunchItem {
   label: string;
   description?: string;
   price: number;
-  alternatives: LunchAlternative[];
+  alternatives?: LunchAlternative[];
+}
+
+export interface Combo {
+  id: string;
+  label: string;
+  description: string;
+  price: number;
+  items: string[];
 }
 
 export interface OpeningHour {
