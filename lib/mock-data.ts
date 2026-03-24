@@ -52,6 +52,14 @@ export interface Combo {
 // CATEGORY ORDER (UI)
 // =========================
 
+export const metaLocation: MetaDataLocation = {
+  key: "location",
+  address: "Loftahammarvägen 2",
+  zipcode: "572 35",
+  city: "Oskarshamn",
+  country: "Sverige",
+};
+
 export const categoryOrder = [
   "Deals",
   "Förrätter",
