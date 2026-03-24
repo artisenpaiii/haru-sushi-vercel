@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Shrikhand, Nunito, Noto_Serif_JP } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -24,6 +24,13 @@ const notoSerifJP = Noto_Serif_JP({
   variable: "--font-noto-serif-jp",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
 
 export const metadata: Metadata = {
   title: "Haru Sushi Oskarshamn — Prisvärd hämtsushi",
@@ -125,7 +132,7 @@ export default function RootLayout({
       >
         <Petals />
         <Navbar />
-        <main className="relative z-1 pt-16 min-h-[calc(100vh-4rem)] flex flex-col [&>section]:flex-1">
+        <main className="relative z-1 pt-16 min-h-screen flex flex-col [&>section]:flex-1">
           {children}
         </main>
         <Footer />

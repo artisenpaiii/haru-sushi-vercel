@@ -18,9 +18,15 @@
   --font-jp: var(--font-noto-serif-jp), serif;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
 body {
+  max-width: 100%;
+  overflow-x: hidden;
   background: var(--color-cream);
   color: var(--color-dark);
   font-family: var(--font-body);

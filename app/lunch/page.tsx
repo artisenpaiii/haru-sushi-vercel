@@ -39,22 +39,27 @@ export default function Lunch() {
               <span className="text-[2.2rem] block mb-2 transition-transform duration-300 group-hover:animate-wiggle">
                 {LUNCH_EMOJIS[i % LUNCH_EMOJIS.length]}
               </span>
-              <p className="font-extrabold text-[0.82rem] tracking-[0.08em] uppercase opacity-75 mb-1">
+              <p className="font-extrabold text-[0.92rem] tracking-[0.08em] uppercase text-white mb-1">
                 {item.label}
               </p>
               {item.description && (
-                <p className="text-sm opacity-70 mb-2">{item.description}</p>
+                <p className="text-[0.95rem] text-white mb-2">{item.description}</p>
               )}
-              <p className="font-display text-[1.2rem] mb-1.5">
+              <p className="font-display text-[1.35rem] text-white mb-1.5">
                 {item.price} kr
               </p>
               {item.alternatives && item.alternatives.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 mt-1.5 justify-center">
-                  {item.alternatives.map((alt) => (
+                  {item.alternatives.map((alt, j) => (
                     <span
-                      key={alt.label}
-                      className="text-xs opacity-70 bg-white/15 py-0.5 px-2 rounded-full"
+                      key={`${alt.label}-${alt.tag ?? j}`}
+                      className="flex items-center gap-1 text-xs text-white bg-white/15 py-0.5 px-2 rounded-full"
                     >
+                      {alt.tag && (
+                        <span className="bg-moss text-white text-[0.6rem] font-bold px-1.5 py-px rounded-full opacity-100">
+                          {alt.tag}
+                        </span>
+                      )}
                       {alt.label} {alt.price} kr
                     </span>
                   ))}

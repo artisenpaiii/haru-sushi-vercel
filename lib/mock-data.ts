@@ -179,11 +179,14 @@ export const lunchItems: LunchItem[] = [
   {
     id: "lunch_sushi",
     label: "Dagens sushi ⭐",
-    description: "10 / 12 / 16 bitar — vegansk 109/129/159kr",
-    price: 119,
+    description: "16 bitar",
+    price: 175,
     alternatives: [
+      { label: "10 bitar", price: 119 },
       { label: "12 bitar", price: 139 },
-      { label: "16 bitar", price: 175 },
+      { label: "10 bitar", price: 109, tag: "Veg" },
+      { label: "12 bitar", price: 129, tag: "Veg" },
+      { label: "16 bitar", price: 159, tag: "Veg" },
     ],
   },
   {
@@ -196,8 +199,11 @@ export const lunchItems: LunchItem[] = [
   {
     id: "lunch_poke",
     label: "Dagens pokébowl",
-    description: "Fråga om dagens pokébowl — vegansk 129kr",
+    description: "Fråga om dagens pokébowl",
     price: 135,
-    alternatives: [],
+    alternatives: [
+      { label: "", tag:'Veg', price: 129 },
+
+    ],
   },
 ];

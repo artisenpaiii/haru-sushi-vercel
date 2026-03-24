@@ -69,7 +69,7 @@ export default function Meny() {
   const allAllergens = Object.keys(ALLERGEN_ICON) as Allergen[];
 
   return (
-    <section className="py-2 lg:py-16 px-8" style={{ background: "var(--color-cream)" }}>
+    <section className="py-2 lg:py-16 px-3 sm:px-8" style={{ background: "var(--color-cream)" }}>
       <div className="max-w-250 mx-auto">
         <header className="text-center mb-10 animate-fade-up">
           <p className="text-[0.78rem] font-extrabold tracking-[0.12em] uppercase text-salmon mb-2">
@@ -147,12 +147,12 @@ export default function Meny() {
             Inga rätter matchar ditt filter i denna kategori.
           </p>
         ) : (
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(340px,1fr))] gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fill,minmax(min(340px,100%),1fr))] gap-4">
             {filtered.map((item) => (
               <div
                 key={item.id}
                 className={cn(
-                  "bg-white rounded-2xl p-5 border-2 transition-all duration-300 hover:-translate-y-1 hover:rotate-[-0.5deg] hover:shadow-[0_12px_32px_rgba(46,31,31,0.1)] group relative overflow-hidden",
+                  "bg-white rounded-2xl p-5 border-2 transition-all duration-300 hover:-translate-y-1 hover:rotate-[-0.5deg] hover:shadow-[0_12px_32px_rgba(46,31,31,0.1)] group relative overflow-hidden w-full min-w-0",
                   itemConflictsFilter(item)
                     ? "border-amber-300 opacity-75"
                     : "border-border hover:border-blush"

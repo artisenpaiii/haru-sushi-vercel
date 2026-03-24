@@ -23,6 +23,7 @@ export interface MenuItem {
 export interface LunchAlternative {
   label: string;
   price: number;
+  tag?: string;
 }
 
 export interface LunchItem {
