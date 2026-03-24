@@ -26,7 +26,7 @@ export default function OmOss() {
         <div className="grid grid-cols-2 gap-12 items-center max-w-[800px] mx-auto max-sm:grid-cols-1 max-sm:gap-8">
           <div>
             <p className="text-mid leading-[1.8] mb-4 text-[1.02rem]">
-              Haru Sushi är en familjeägd hämtsushirestaurang i Oskarshamn. Vi
+              Haru Sushi är en familjeägd sushirestaurang i Oskarshamn. Vi
               tror att riktigt god japansk mat ska vara tillgänglig för alla —
               utan att kompromissa med kvalitet eller smak.
             </p>

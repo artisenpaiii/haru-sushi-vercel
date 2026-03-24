@@ -48,7 +48,7 @@ export default function Lunch() {
               <p className="font-display text-[1.2rem] mb-1.5">
                 {item.price} kr
               </p>
-              {item.alternatives.length > 0 && (
+              {item.alternatives && item.alternatives.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 mt-1.5 justify-center">
                   {item.alternatives.map((alt) => (
                     <span

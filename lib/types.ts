@@ -16,8 +16,7 @@ export interface MenuItem {
   iconId?: string;
   tags?: string[];
   allergens?: Allergen[];
-  price: number;
-  price2?: number;
+  price: string;
   upsell?: string[];
 }
 
@@ -44,8 +43,9 @@ export interface Combo {
 
 export interface OpeningHour {
   label: string;
-  from: string;
-  to: string;
+  from?: string;
+  to?: string;
+  closed?: boolean;
   avvikande?: boolean;
 }
 

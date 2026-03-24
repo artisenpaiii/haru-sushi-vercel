@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { metaOpeningHours } from "@/lib/mock-data";
 
 const highlights = [
   { icon: "🍣", title: "Färsk Sushi", text: "Lagad med kärlek och riktiga råvaror, varje dag." },
@@ -39,6 +40,16 @@ export default function Home() {
           <p className="text-[1.05rem] text-mid max-w-[440px] mx-auto mb-9 leading-[1.7] animate-fade-up" style={{ animationDelay: "0.6s" }}>
             Färsk sushi, friterad maki, sushiburrito och varmrätter. Beställ och hämta — enkelt, gott och prisvärt.
           </p>
+
+          {/* Opening hours */}
+          <div className="flex flex-col items-center gap-1 mb-8 animate-fade-up" style={{ animationDelay: "0.68s" }}>
+            {metaOpeningHours.entries.filter(e => !e.avvikande).map((e) => (
+              <span key={e.label} className="text-[0.8rem] text-mid font-semibold">
+                <span className="text-light font-normal">{e.label}:</span>
+                {" "}{e.closed ? <span className="text-cherry/70">Stängt</span> : `${e.from}–${e.to}`}
+              </span>
+            ))}
+          </div>
 
           <div className="flex gap-3 justify-center flex-wrap animate-fade-up" style={{ animationDelay: "0.75s" }}>
             <Link

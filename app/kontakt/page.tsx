@@ -44,7 +44,7 @@ export default function Kontakt() {
             <p className="text-[0.9rem] text-mid leading-[1.8]">
               {regularHours.map((entry) => (
                 <span key={entry.label}>
-                  {entry.label}: {entry.from} – {entry.to}
+                  {entry.label}: {entry.closed ? "Stängt" : `${entry.from} – ${entry.to}`}
                   <br />
                 </span>
               ))}
@@ -79,7 +79,12 @@ export default function Kontakt() {
                 {contact.phone}
               </a>
               <br />
-              {contact.email}
+              <a
+                href={`mailto:${contact.email}`}
+                className="transition-colors duration-200 hover:text-salmon"
+              >
+                {contact.email}
+              </a>
               <br /><br />
               <span className="text-[0.82rem] opacity-70">Bokningar välkomna!</span>
             </p>

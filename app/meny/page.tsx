@@ -51,11 +51,19 @@ export default function Meny() {
     });
   };
 
+  const itemConflictsFilter = (item: typeof menuItems[0]) =>
+    activeAllergens.size > 0 && (item.allergens?.some((a) => activeAllergens.has(a)) ?? false);
+
+  const hasAlternative = (item: typeof menuItems[0]) =>
+    !!item.subDescription || (item.tags && item.tags.length > 0);
+
   const filtered = menuItems.filter((item) => {
     if (item.category !== activeCategory) return false;
     if (activeAllergens.size === 0) return true;
-    // hide items that contain any selected allergen
-    return !item.allergens?.some((a) => activeAllergens.has(a));
+    const conflicts = item.allergens?.some((a) => activeAllergens.has(a));
+    if (!conflicts) return true;
+    // keep items that have a subDescription or tags hinting at alternatives
+    return hasAlternative(item);
   });
 
   const allAllergens = Object.keys(ALLERGEN_ICON) as Allergen[];
@@ -139,11 +147,16 @@ export default function Meny() {
             Inga rätter matchar ditt filter i denna kategori.
           </p>
         ) : (
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4">
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(340px,1fr))] gap-4">
             {filtered.map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-2xl p-5 border-2 border-border transition-all duration-300 hover:-translate-y-1 hover:rotate-[-0.5deg] hover:shadow-[0_12px_32px_rgba(46,31,31,0.1)] hover:border-blush group relative overflow-hidden"
+                className={cn(
+                  "bg-white rounded-2xl p-5 border-2 transition-all duration-300 hover:-translate-y-1 hover:rotate-[-0.5deg] hover:shadow-[0_12px_32px_rgba(46,31,31,0.1)] group relative overflow-hidden",
+                  itemConflictsFilter(item)
+                    ? "border-amber-300 opacity-75"
+                    : "border-border hover:border-blush"
+                )}
               >
                 {/* top accent bar */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blush to-salmon opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-2xl" />
@@ -153,41 +166,36 @@ export default function Meny() {
                     {MENU_ITEM_ICON[item.iconId ?? ""] || "🍣"}
                   </span>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-extrabold text-[0.95rem] text-dark leading-[1.3]">
+                    <h3 className="font-extrabold text-[1.05rem] text-dark leading-[1.3]">
                       {item.label}
                     </h3>
                     {item.subDescription && (
-                      <span className="block font-jp text-[0.72rem] text-light font-normal mt-0.5">
+                      <span className="block font-jp text-[0.8rem] text-mid font-semibold mt-0.5">
                         {item.subDescription}
                       </span>
                     )}
                   </div>
                   <div className="text-right shrink-0">
-                    <span className="font-display text-base text-cherry whitespace-nowrap">
-                      {item.price} kr
+                    <span className="font-display text-[1.1rem] text-cherry whitespace-nowrap">
+                      {item.price}
                     </span>
-                    {item.price2 && (
-                      <span className="block text-[0.7rem] text-light">
-                        / {item.price2} kr
-                      </span>
-                    )}
                   </div>
                 </div>
 
                 {item.description && (
-                  <p className="text-[0.82rem] text-light leading-relaxed mb-2">
+                  <p className="text-[0.92rem] text-light leading-relaxed mb-2">
                     {item.description}
                   </p>
                 )}
 
                 {/* Tags */}
                 {item.tags && item.tags.length > 0 && (
-                  <div className="flex gap-1 flex-wrap mb-2.5">
+                  <div className="flex items-center gap-1.5 flex-wrap mb-2.5">
                     {item.tags.map((tag) => (
                       <span
                         key={tag}
                         className={cn(
-                          "text-[0.68rem] font-bold py-0.5 px-2 rounded-full tracking-[0.05em]",
+                          "text-[0.68rem] font-bold py-0.5 px-2 rounded-md tracking-[0.04em]",
                           tagClass(tag)
                         )}
                       >
@@ -199,21 +207,33 @@ export default function Meny() {
 
                 {/* Allergens */}
                 {item.allergens && item.allergens.length > 0 && (
-                  <div className="flex gap-1 flex-wrap mt-auto pt-2.5 border-t border-border/60">
-                    {item.allergens.map((a) => (
-                      <span
-                        key={a}
-                        title={a}
-                        className={cn(
-                          "flex items-center gap-1 text-[0.68rem] font-bold py-0.5 px-2 rounded-full border",
-                          ALLERGEN_COLOR[a]
-                        )}
-                      >
-                        <span>{ALLERGEN_ICON[a]}</span>
-                        <span>{a}</span>
-                      </span>
-                    ))}
+                  <div className="pt-2.5 border-t border-border/60 mt-auto">
+                    <p className="text-[0.62rem] font-extrabold uppercase tracking-widest text-light/60 mb-1.5">
+                      Innehåller
+                    </p>
+                    <div className="flex gap-1 flex-wrap">
+                      {item.allergens.map((a) => (
+                        <span
+                          key={a}
+                          title={a}
+                          className={cn(
+                            "flex items-center gap-1 text-[0.68rem] font-bold py-0.5 px-2 rounded-md border",
+                            ALLERGEN_COLOR[a]
+                          )}
+                        >
+                          <span>{ALLERGEN_ICON[a]}</span>
+                          <span>{a}</span>
+                        </span>
+                      ))}
+                    </div>
                   </div>
+                )}
+
+                {/* Alternative warning */}
+                {itemConflictsFilter(item) && (
+                  <p className="mt-2 text-[0.72rem] font-bold text-amber-700 bg-amber-50 rounded-lg px-2.5 py-1.5 border border-amber-200">
+                    ⚠️ Alternativ kan finnas — se beskrivning ovan
+                  </p>
                 )}
               </div>
             ))}

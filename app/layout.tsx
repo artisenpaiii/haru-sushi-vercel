@@ -26,17 +26,26 @@ const notoSerifJP = Noto_Serif_JP({
 });
 
 export const metadata: Metadata = {
-  title: "Haru Sushi — Prisvärd hämtsushi i Oskarshamn",
+  title: "Haru Sushi Oskarshamn — Prisvärd hämtsushi",
   description:
-    "Färsk sushi, friterad maki, sushiburrito och varmrätter. Beställ och hämta — enkelt, gott och prisvärt.",
+    "Haru Sushi i Oskarshamn — färsk sushi, friterad maki, sushiburrito och varmrätter. Beställ och hämta på Köpmangatan 5. Öppet mån–sön.",
   metadataBase: new URL("https://harusushi.se"),
   alternates: {
     canonical: "/",
   },
+  keywords: [
+    "sushi Oskarshamn",
+    "hämtsushi Oskarshamn",
+    "Haru Sushi",
+    "japansk mat Oskarshamn",
+    "maki Oskarshamn",
+    "sushiburrito",
+    "take away sushi",
+  ],
   openGraph: {
-    title: "Haru Sushi — Prisvärd hämtsushi i Oskarshamn",
+    title: "Haru Sushi Oskarshamn — Prisvärd hämtsushi",
     description:
-      "Färsk sushi, friterad maki, sushiburrito och varmrätter. Beställ och hämta — enkelt, gott och prisvärt.",
+      "Haru Sushi i Oskarshamn — färsk sushi, friterad maki, sushiburrito och varmrätter. Beställ och hämta på Köpmangatan 5.",
     url: "https://harusushi.se",
     siteName: "Haru Sushi",
     locale: "sv_SE",
@@ -52,6 +61,52 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  name: "Haru Sushi",
+  url: "https://harusushi.se",
+  telephone: "0760052045",
+  email: "kontakt@harusushi.se",
+  servesCuisine: ["Japanese", "Sushi"],
+  priceRange: "$$",
+  currenciesAccepted: "SEK",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Köpmangatan 5",
+    postalCode: "572 30",
+    addressLocality: "Oskarshamn",
+    addressCountry: "SE",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 57.2647,
+    longitude: 16.4479,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "11:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "12:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Sunday",
+      opens: "12:00",
+      closes: "19:00",
+    },
+  ],
+  hasMap: "https://maps.google.com/?q=Köpmangatan+5,+Oskarshamn",
+  sameAs: ["https://harusushi.se"],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -59,6 +114,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sv">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${shrikhand.variable} ${nunito.variable} ${notoSerifJP.variable}`}
       >
