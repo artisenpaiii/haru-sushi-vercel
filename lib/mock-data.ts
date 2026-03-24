@@ -61,6 +61,22 @@ export const metaLocation: MetaDataLocation = {
   country: "Sverige",
 };
 
+export const metaContact: MetaDataContact = {
+  key: "contact",
+  phone: "0491-123 45",
+  email: "info@harusushi.se",
+};
+
+export const metaOpeningHours: MetaDataOpeningHours = {
+  key: "openingHours",
+  entries: [
+    { label: "Måndag–Fredag (Lunch)", from: "11:00", to: "14:00" },
+    { label: "Måndag–Fredag", from: "11:00", to: "20:00" },
+    { label: "Lördag", from: "12:00", to: "20:00" },
+    { label: "Söndag", from: "12:00", to: "19:00" },
+  ],
+};
+
 // =========================
 // CATEGORY ORDER (UI)
 // =========================
