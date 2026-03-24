@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const PETAL_COUNT = 18;
+const PETAL_COUNT = 55;
 
 export function Petals() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -14,9 +14,16 @@ export function Petals() {
     for (let i = 0; i < PETAL_COUNT; i++) {
       const petal = document.createElement("div");
       petal.className = "petal";
-      petal.style.left = `${Math.random() * 100}vw`;
-      petal.style.animationDuration = `${6 + Math.random() * 8}s`;
-      petal.style.animationDelay = `${Math.random() * 12}s`;
+      // spread petals wider, even off-screen left/right
+      petal.style.left = `${-5 + Math.random() * 115}vw`;
+      petal.style.animationDuration = `${3.5 + Math.random() * 10}s`;
+      petal.style.animationDelay = `${Math.random() * 22}s`;
+
+      // random size scaling
+      const scale = 0.5 + Math.random() * 1.6;
+      petal.style.setProperty("--scale", String(scale));
+      petal.style.transformOrigin = "center";
+
       container.appendChild(petal);
     }
 

@@ -3,6 +3,7 @@ import { Shrikhand, Nunito, Noto_Serif_JP } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Petals } from "@/components/Petals";
+import { CursorTrail } from "@/components/CursorTrail";
 import "./globals.css";
 
 const shrikhand = Shrikhand({
@@ -29,6 +30,27 @@ export const metadata: Metadata = {
   title: "Haru Sushi — Prisvärd hämtsushi i Oskarshamn",
   description:
     "Färsk sushi, friterad maki, sushiburrito och varmrätter. Beställ och hämta — enkelt, gott och prisvärt.",
+  metadataBase: new URL("https://harusushi.se"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Haru Sushi — Prisvärd hämtsushi i Oskarshamn",
+    description:
+      "Färsk sushi, friterad maki, sushiburrito och varmrätter. Beställ och hämta — enkelt, gott och prisvärt.",
+    url: "https://harusushi.se",
+    siteName: "Haru Sushi",
+    locale: "sv_SE",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -41,6 +63,7 @@ export default function RootLayout({
       <body
         className={`${shrikhand.variable} ${nunito.variable} ${notoSerifJP.variable}`}
       >
+        <CursorTrail />
         <Petals />
         <Navbar />
         <main className="relative z-1 pt-16 min-h-[calc(100vh-4rem)] flex flex-col [&>section]:flex-1">
