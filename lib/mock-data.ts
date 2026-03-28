@@ -33,7 +33,8 @@ export const metaOpeningHours: MetaDataOpeningHours = {
   entries: [
     { label: "Måndag", from: "11:00", to: "20:00" },
     { label: "Tisdag", closed: true },
-    { label: "Onsdag-Söndag", from: "11:00", to: "20:00" },
+    { label: "Onsdag-Fredag", from: "11:00", to: "20:00" },
+    { label: "Lördag-Söndag", from: "12:00", to: "20:00" },
     { label: "Lunch Vardagar", from: "11:00", to: "14:00" },
   ],
 };
@@ -130,8 +131,12 @@ export const menuItems: MenuItem[] = [
   { id: "bento_gyoza", label: "Gyozabento + 5 bitar mix-sushi", description: "Ris, nötgyoza, picklade grönsaker", category: "Bentobox", allergens: ["Gluten", "Soja"], price: "179 kr" },
 
   // 🥗 POKÉ BOWL
-  { id: "poke_fish", label: "Lax / Tempura ebi / Handskalade räkor / Karaagekyckling / Yakiniku", description: "Sushiris, edamamebönor, mango, picklad rödlök, gurka, sallad, 2 valfria såser", category: "Poké Bowl", tags: ["Populär"], allergens: ["Fisk", "Skaldjur", "Gluten", "Soja", "Ägg"], price: "155 kr" },
-  { id: "poke_tofu", label: "Tofu", description: "Sushiris, edamamebönor, mango, picklad rödlök, gurka, sallad, 2 valfria såser", category: "Poké Bowl", tags: ["Vegansk"], allergens: ["Soja", "Sesam"], price: "149 kr" },
+  { id: "poke_vinegar", label: "Lax", description: "Sushiris, edamamebönor, mango, picklad rödlök, gurka, sallad, sojavinägrett", category: "Poké Bowl", tags: ["Populär"], allergens: ["Fisk", "Soja"], price: "155 kr" },
+  { id: "poke_teriyaki", label: "Tempura ebi / Handskalade räkor", description: "Sushiris, edamamebönor, mango, picklad rödlök, gurka, sallad, teriyakisås, chilimajo", category: "Poké Bowl", tags: ["Populär"], allergens: ["Skaldjur", "Gluten", "Soja", "Ägg"], price: "155 kr" },
+  { id: "poke_majo", label: "Karaagekyckling", description: "Sushiris, edamamebönor, mango, picklad rödlök, gurka, sallad, kewpiemajo", category: "Poké Bowl", tags: ["Populär"], allergens: ["Gluten", "Soja", "Ägg"], price: "155 kr" },
+  { id: "poke_yakiniku", label: "Yakiniku", description: "Sushiris, edamamebönor, mango, picklad rödlök, gurka, sallad, kewpiemajo", category: "Poké Bowl", tags: ["Populär"], allergens: ["Soja", "Ägg"], price: "155 kr" },
+  { id: "poke_tofu", label: "Tofu", description: "Sushiris, edamamebönor, mango, picklad rödlök, gurka, sallad, sesamdressing", category: "Poké Bowl", tags: ["Vegansk"], allergens: ["Soja", "Sesam"], price: "149 kr" },
+  
 
   // 🥤 TILLBEHÖR
   { id: "side_chillimajo", label: "Chillimajo", description: undefined, category: "Tillbehör", allergens: ["Ägg"], price: "15 kr" },
