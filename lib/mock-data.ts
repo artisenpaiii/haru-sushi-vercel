@@ -105,7 +105,7 @@ export const menuItems: MenuItem[] = [
   { id: "fried_spicy_tuna", label: "Friterad spicy tuna", description: "Avokado, gurka, chillimajo, teriyakisås, rostad lök", category: "Friterad Maki", allergens: ["Fisk", "Gluten", "Ägg", "Soja"], price: "89/175 kr" },
   { id: "fried_salmon", label: "Friterad lax", description: "Avokado, gurka, chillimajo, teriyakisås, rostad lök", category: "Friterad Maki", tags: ["Populär"], allergens: ["Fisk", "Gluten", "Ägg", "Soja"], price: "89/175 kr" },
   { id: "fried_teriyaki_chicken", label: "Friterad teriyakikyckling", description: "Avokado, gurka, chillimajo, rostad lök", category: "Friterad Maki", allergens: ["Gluten", "Ägg", "Soja"], price: "89/175 kr" },
-  { id: "fried_yakiniku", label: "Friterad yakiniku", description: "Sojamarinerad entrecôte, avokado, gurka, kewpiemajo, teriyakisås, rostad lök", category: "Friterad Maki", tags: ["Premium"], allergens: ["Gluten", "Ägg", "Soja"], price: "89/175 kr" },
+  { id: "fried_yakiniku", label: "Friterad yakiniku", description: "Sojamarinerad högrev, avokado, gurka, kewpiemajo, teriyakisås, rostad lök", category: "Friterad Maki", tags: ["Premium"], allergens: ["Gluten", "Ägg", "Soja"], price: "89/175 kr" },
 
   // 🌯 SUSHIBURRITO
   { id: "burrito_salmon_chicken", label: "Lax / Kyckling", description: "Philadelphiaost, avokado, gurka, chillimajo, teriyakisås", category: "Sushiburrito", tags: ["Populär"], allergens: ["Fisk", "Gluten", "Mjölk", "Ägg", "Soja"], price: "185 kr" },
@@ -122,12 +122,12 @@ export const menuItems: MenuItem[] = [
   { id: "hot_panko_chicken", label: "Pankokyckling", description: "Ris, pankofriterad kyckling, sallad, picklade grönsaker, chillimajo, teriyakisås", category: "Varmrätter", allergens: ["Gluten", "Ägg", "Soja"], price: "159 kr" },
   { id: "hot_karaage", label: "Karaagekyckling", description: "Ris, friterad sojamarinerad kyckling, sallad, picklade grönsaker, kewpiemajo", category: "Varmrätter", tags: ["Populär"], allergens: ["Gluten", "Soja", "Ägg"], price: "149 kr" },
   { id: "hot_salmon_teriyaki", label: "Laxteriyaki", description: "Ris, stekt lax med teriyakiglaze, sallad, picklade grönsaker, sesamfrön", category: "Varmrätter", allergens: ["Fisk", "Soja", "Sesam"], price: "159 kr" },
-  { id: "hot_yakiniku", label: "Yakiniku", description: "Ris, sojamarinerad entrecöte, sallad, picklade grönsaker, sesamfrön", category: "Varmrätter", allergens: ["Soja", "Sesam"], price: "149 kr" },
+  { id: "hot_yakiniku", label: "Yakiniku", description: "Ris, sojamarinerad högrev, sallad, picklade grönsaker, sesamfrön", category: "Varmrätter", allergens: ["Soja", "Sesam"], price: "149 kr" },
   { id: "hot_yakisoba", label: "Yakisoba kyckling/biff", description: "Stekta nudlar, sallad, picklade grönsaker, sesamfrön", category: "Varmrätter", allergens: ["Gluten", "Soja", "Sesam"], price: "145 kr" },
 
   // 🍱 BENTOBOX
   { id: "bento_karaage", label: "Karaagebento + 5 bitar mix-sushi", description: "Ris, karaagekyckling, picklade grönsaker", category: "Bentobox", allergens: ["Gluten", "Soja", "Ägg"], price: "179 kr" },
-  { id: "bento_yakiniku", label: "Yakinikubento + 5 bitar mix-sushi", description: "Ris, sojamarinerad entrecôte, picklade grönsaker", category: "Bentobox", allergens: ["Soja"], price: "179 kr" },
+  { id: "bento_yakiniku", label: "Yakinikubento + 5 bitar mix-sushi", description: "Ris, sojamarinerad högrev, picklade grönsaker", category: "Bentobox", allergens: ["Soja"], price: "179 kr" },
   { id: "bento_gyoza", label: "Gyozabento + 5 bitar mix-sushi", description: "Ris, nötgyoza, picklade grönsaker", category: "Bentobox", allergens: ["Gluten", "Soja"], price: "179 kr" },
 
   // 🥗 POKÉ BOWL
@@ -163,7 +163,7 @@ export const combos: Combo[] = [
   {
     id: "bento_yakiniku_combo",
     label: "Yakinikubento + 5 bitar mix-sushi",
-    description: "Ris, sojamarinerad entrecôte, picklade grönsaker",
+    description: "Ris, sojamarinerad högrev, picklade grönsaker",
     price: 179,
     items: ["hot_yakiniku"],
   },
