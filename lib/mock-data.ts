@@ -26,6 +26,7 @@ export const metaContact: MetaDataContact = {
   key: "contact",
   phone: "0760052045",
   email: "kontakt@harusushi.se",
+  orderUrl: "https://weiq.app/harusushi",
 };
 
 export const metaOpeningHours: MetaDataOpeningHours = {

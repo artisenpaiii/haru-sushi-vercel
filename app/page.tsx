@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { metaOpeningHours } from "@/lib/mock-data";
+import { metaOpeningHours, metaContact } from "@/lib/mock-data";
 
 const highlights = [
   { icon: "🍣", title: "Färsk Sushi", text: "Lagad med kärlek och riktiga råvaror, varje dag." },
@@ -70,6 +70,14 @@ export default function Home() {
             >
               📍 Hitta Oss
             </Link>
+            <a
+              href={metaContact.orderUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sm:hidden inline-flex items-center gap-2 py-3.5 px-7 rounded-full font-extrabold text-[0.95rem] bg-sage text-dark shadow-[0_4px_16px_rgba(168,196,154,0.4)] transition-all duration-200 hover:-translate-y-1 hover:scale-[1.04] hover:shadow-[0_8px_24px_rgba(168,196,154,0.5)]"
+            >
+              🛒 Beställ
+            </a>
           </div>
         </div>
 
@@ -123,6 +131,14 @@ export default function Home() {
             >
               🍣 Lunchmeny
             </Link>
+            <a
+              href={metaContact.orderUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 py-3.5 px-7 rounded-full font-extrabold text-[0.95rem] bg-sage text-dark shadow-[0_4px_16px_rgba(168,196,154,0.4)] transition-all duration-200 hover:-translate-y-1 hover:scale-[1.04] hover:shadow-[0_8px_24px_rgba(168,196,154,0.5)]"
+            >
+              🛒 Beställ
+            </a>
           </div>
         </div>
       </section>

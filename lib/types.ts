@@ -54,6 +54,7 @@ export interface MetaDataContact {
   key: "contact";
   phone: string;
   email: string;
+  orderUrl: string;
 }
 
 export interface MetaDataLocation {

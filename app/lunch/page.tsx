@@ -1,4 +1,5 @@
 import { lunchItems, metaOpeningHours } from "@/lib/mock-data";
+import { OrderButton } from "@/components/OrderButton";
 
 const LUNCH_EMOJIS = ["🍣", "🥗", "🍗", "🌯"];
 
@@ -72,6 +73,9 @@ export default function Lunch() {
         <p className="text-center mt-8 text-[0.9rem] opacity-75 font-bold">
           🥤 Lägg till dryck för 20 kr
         </p>
+      </div>
+      <div className="fixed bottom-5 right-5 z-[100]">
+        <OrderButton />
       </div>
     </section>
   );

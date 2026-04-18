@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { menuItems, categoryOrder } from "@/lib/mock-data";
+import { OrderButton } from "@/components/OrderButton";
 import type { Allergen } from "@/lib/mock-data";
 import { MENU_ITEM_ICON } from "@/lib/constants";
 import { cn } from "@/lib/cn";
@@ -69,7 +70,10 @@ export default function Meny() {
   const allAllergens = Object.keys(ALLERGEN_ICON) as Allergen[];
 
   return (
-    <section className="py-2 lg:py-16 px-3 sm:px-8" style={{ background: "var(--color-cream)" }}>
+    <section className="relative py-2 lg:py-16 px-3 sm:px-8" style={{ background: "var(--color-cream)" }}>
+      <div className="fixed bottom-5 right-5 z-[100]">
+        <OrderButton />
+      </div>
       <div className="max-w-250 mx-auto">
         <header className="text-center mb-10 animate-fade-up">
           <p className="text-[0.78rem] font-extrabold tracking-[0.12em] uppercase text-salmon mb-2">
