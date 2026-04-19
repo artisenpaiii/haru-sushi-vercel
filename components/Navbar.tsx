@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 import { metaContact } from "@/lib/mock-data";
+import { OrderButton } from "./OrderButton";
 
 const NAV_LINKS = [
   { href: "/om-oss", label: "Om Oss" },
@@ -63,16 +64,8 @@ export function Navbar() {
             </Link>
           </li>
         ))}
+      <OrderButton/>
       </ul>
-
-      <a
-        href={metaContact.orderUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="max-sm:hidden inline-flex items-center gap-1.5 py-2 px-5 rounded-full font-extrabold text-[0.85rem] bg-sage text-dark shadow-[0_2px_10px_rgba(168,196,154,0.35)] transition-all duration-200 hover:-translate-y-px hover:scale-[1.04] hover:shadow-[0_4px_16px_rgba(168,196,154,0.5)]"
-      >
-        🛒 Beställ
-      </a>
     </nav>
   );
 }

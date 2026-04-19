@@ -1,3 +1,4 @@
+import { Truculenta } from "next/font/google";
 import type {
   Allergen,
   MenuItem,
@@ -213,3 +214,5 @@ export const lunchItems: LunchItem[] = [
     ],
   },
 ];
+
+export const orderDisable = true;
