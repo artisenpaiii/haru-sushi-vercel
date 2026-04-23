@@ -215,4 +215,4 @@ export const lunchItems: LunchItem[] = [
   },
 ];
 
-export const orderDisable = true;
+export const orderDisable = false;
