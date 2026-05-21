@@ -68,7 +68,7 @@ export const menuItems: MenuItem[] = [
   { id: "starter_temaki", label: "Temaki", description: "Lax / Tonfisk / Räka", category: "Förrätter", allergens: ["Fisk", "Skaldjur"], price: "65 kr" },
   { id: "starter_hosomaki", label: "Hosomaki 6 bitar", description: "Lax / Ebitempura / Gurka / Avocado", subDescription: "Vegetarisk*", category: "Förrätter", allergens: ["Fisk", "Skaldjur", "Gluten"], price: "65kr / 55kr*" },
   { id: "starter_spring_chicken", label: "Kycklingvårrulle (4 st)", category: "Förrätter", allergens: ["Gluten"], price: "65 kr" },
-  { id: "starter_spring_vegan", label: "Vegansk vårrulle (6 st)", category: "Förrätter", tags: ["Vegansk"], allergens: ["Gluten"], price: "45 kr" },
+  { id: "starter_spring_vegan", label: "Vegetarisk vårrulle (6 st)", category: "Förrätter", tags: ["Vegetarisk"], allergens: ["Gluten"], price: "45 kr" },
   { id: "starter_tempura_ebi", label: "Tempura ebi (4 st)", category: "Förrätter", allergens: ["Skaldjur", "Gluten"], price: "65 kr" },
   { id: "starter_gyoza", label: "Friterad nötgyoza (5 st)", category: "Förrätter", allergens: ["Gluten", "Soja"], price: "65 kr" },
   { id: "starter_edamame", label: "Edamamebönor", category: "Förrätter", tags: ["Vegansk"], allergens: ["Soja"], price: "45 kr" },
@@ -99,7 +99,7 @@ export const menuItems: MenuItem[] = [
   { id: "maki_california", label: "California", description: "Crabfish, gurka, avokado, kewpiemajo, rom", category: "Maki", allergens: ["Fisk", "Ägg"], price: "85/169 kr" },
   { id: "maki_crab_tempura", label: "Crab Tempura", description: "Tempurafriterad crabfish, avokado, philadelphiaost, kewpiemajo, teriyakisås", category: "Maki", allergens: ["Fisk", "Gluten", "Mjölk", "Ägg", "Soja"], price: "89/175 kr" },
   { id: "maki_teriyaki_chicken", label: "Teriyakikyckling", description: "Avokado, gurka, chillimajo, rostad lök", category: "Maki", allergens: ["Gluten", "Soja", "Ägg"], price: "85/169 kr" },
-  { id: "maki_vegan", label: "Vegansk", description: "Tofu, avokado, gurka, rättika, vegansk majonnäs, picklad rödlök", category: "Maki", tags: ["Vegansk"], allergens: ["Soja"], price: "85/169 kr" },
+  { id: "maki_vegan", label: "Vegetarisk", description: "Tofu, avokado, gurka, rättika, chilimajo, picklad rödlök", category: "Maki", tags: ["Vegetarisk"], allergens: ["Soja"], price: "85/169 kr" },
   { id: "maki_haru_special", label: "Haru Special ⭐", description: "Halstrad lax, räktempura, avokado, philadelphiaost, teriyakisås, rom", category: "Maki", tags: ["Signatur", "Populär"], allergens: ["Fisk", "Skaldjur", "Gluten", "Mjölk", "Soja"], price: "89/175 kr" },
   { id: "maki_rainbow", label: "Rainbow", description: "Lax, vannameiräkor, gurka, avokado, kewpiemajo, rom", category: "Maki", allergens: ["Fisk", "Skaldjur", "Ägg"], price: "89/175 kr" },
 
@@ -111,7 +111,7 @@ export const menuItems: MenuItem[] = [
 
   // 🌯 SUSHIBURRITO
   { id: "burrito_salmon_chicken", label: "Lax / Kyckling", description: "Philadelphiaost, avokado, gurka, chillimajo, teriyakisås", category: "Sushiburrito", tags: ["Populär"], allergens: ["Fisk", "Gluten", "Mjölk", "Ägg", "Soja"], price: "185 kr" },
-  { id: "burrito_vegan", label: "Vegansk", description: "Tofu, morot, picklad rättika, avokado, gurka, teriyakisås", category: "Sushiburrito", tags: ["Vegansk"], allergens: ["Soja"], price: "175 kr" },
+  { id: "burrito_vegan", label: "Vegetarisk", description: "Tofu, morot, picklad rättika, avokado, gurka, teriyakisås", category: "Sushiburrito", tags: ["Vegetarisk"], allergens: ["Soja"], price: "175 kr" },
 
   // 🍱 MIXAD SUSHI
   { id: "mix_10", label: "10 bitar", description: "5 maki / 5 nigiri", subDescription:'Vegetarisk*', category: "Mixad Sushi", price: "125kr / 115 kr*" },
@@ -137,7 +137,7 @@ export const menuItems: MenuItem[] = [
   { id: "poke_teriyaki", label: "Tempura ebi / Handskalade räkor", description: "Sushiris, edamamebönor, mango, picklad rödlök, gurka, sallad, teriyakisås, chilimajo", category: "Poké Bowl", tags: ["Populär"], allergens: ["Skaldjur", "Gluten", "Soja", "Ägg"], price: "155 kr" },
   { id: "poke_majo", label: "Karaagekyckling", description: "Sushiris, edamamebönor, mango, picklad rödlök, gurka, sallad, kewpiemajo", category: "Poké Bowl", tags: ["Populär"], allergens: ["Gluten", "Soja", "Ägg"], price: "155 kr" },
   { id: "poke_yakiniku", label: "Yakiniku", description: "Sushiris, edamamebönor, mango, picklad rödlök, gurka, sallad, kewpiemajo", category: "Poké Bowl", tags: ["Populär"], allergens: ["Soja", "Ägg"], price: "155 kr" },
-  { id: "poke_tofu", label: "Tofu", description: "Sushiris, edamamebönor, mango, picklad rödlök, gurka, sallad, sesamdressing", category: "Poké Bowl", tags: ["Vegansk"], allergens: ["Soja", "Sesam"], price: "149 kr" },
+  { id: "poke_tofu", label: "Tofu", description: "Sushiris, edamamebönor, mango, picklad rödlök, gurka, sallad, sesamdressing", category: "Poké Bowl", tags: ["Vegetarisk"], allergens: ["Soja", "Sesam"], price: "149 kr" },
   
 
   // 🥤 TILLBEHÖR
