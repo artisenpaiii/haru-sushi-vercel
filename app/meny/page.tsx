@@ -167,7 +167,7 @@ export default function Meny() {
 
                 <div className="flex items-start gap-2.5 mb-2">
                   <span className="text-2xl leading-none shrink-0 transition-transform duration-300 group-hover:animate-wiggle">
-                    {MENU_ITEM_ICON[item.iconId ?? ""] || "🍣"}
+                    {MENU_ITEM_ICON[item.iconId""] || "🍣"}
                   </span>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-extrabold text-[1.05rem] text-dark leading-[1.3]">
